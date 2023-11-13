@@ -10,3 +10,4 @@ framespersecond = 60
 pipe_image = "images/pipe.png"
 background_image = "images/background.png"
 bird_image = "images/bird.png"
+elevation = window_heigth * 0.8

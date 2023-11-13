@@ -16,3 +16,4 @@ if __name__ == "__main__":  # aus geekforgeeks
     # For initializing modules of pygame library
     pygame.init()
     framepersecond_clock = pygame.time.Clock()
+elevation = window_heigth * 0.8

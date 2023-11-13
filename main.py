@@ -1,7 +1,7 @@
-"""
-This is the suggested main entry Python source file for your project
-"""
+import pygame
 
+# globale Variable for game window
+window_heigth = 600
+window_width = 400
 
-if __name__ == "__main__":
-    print("Hello")
+# generate window

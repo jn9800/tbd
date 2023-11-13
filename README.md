@@ -1,6 +1,6 @@
 
 
-# <Project flappy_bird>
+## flappy_bird
 
 In a few sentences describe what your project is trying to solve.
 

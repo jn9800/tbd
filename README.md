@@ -5,21 +5,20 @@
 In a few sentences describe what your project is trying to solve.
 
 **We are planing to launch a flappy birds successor**
-the base idea is to create a simple version of flappy bird, where a bird or another icon jumps across the screen through gates. 
-Each gate you pass, will add one score point on your current score. In case we achieve a sufficient level of the game within the period of this course, we will also try to implement a highscore system.
-
-The game should run within a separate window with a limited screensize. 
-
+<br>the base idea is to create a simple version of flappy bird, where a bird or another icon jumps across the screen through gates. 
+<br>Each gate you pass, will add one score point on your current score. In case we achieve a sufficient level of the game within the period of this course, we will also try to implement a highscore system.
+<br>
+<br>The game should run within a separate window with a limited screensize. 
+<br><br>
 <sub>**first step:** trying to create a separate window, that opens when you run the app and import libraries that allow to run a game within python.</sub>
-
-<sub>**second step:** importing images, backgrounds and playericons that will then at a certain point move across the screen.</sub>
-<sub>**third step:** now we want to start with the gate creation, giving the entire game a challenge.</sub>
-<sub>**fourth step:** to now not make the game buggy, we implement collision detection with the gates and the screen border, this limits the movement through each gate.</sub>
-<sub>**step five:** Scoring system and game over detection - when the player jumps through a gate, the score should increase by 1 point, when a player rams into a gate, the game should end immediately.</sub>
-<sub>**step six:** game loop, to restart the game within the game, not having to relaunch it via VSCode.</sub>
-<sub>**step seven:** develop a highscore system, that allows to track your best result in game.</sub>
-<sub>**additional steps:** indeally, if all steps above are completed, we will improve the visuals of the game, including a background and more, try fixing bugs and so on.</sub>
-<sub></sub>
+<br>
+<sub>**second step:** importing images, backgrounds and playericons that will then at a certain point move across the screen.</sub><br>
+<sub>**third step:** now we want to start with the gate creation, giving the entire game a challenge.</sub><br>
+<sub>**fourth step:** to now not make the game buggy, we implement collision detection with the gates and the screen border, this limits the movement through each gate.</sub><br>
+<sub>**step five:** Scoring system and game over detection - when the player jumps through a gate, the score should increase by 1 point, when a player rams into a gate, the game should end immediately.</sub><br>
+<sub>**step six:** game loop, to restart the game within the game, not having to relaunch it via VSCode.</sub><br>
+<sub>**step seven:** develop a highscore system, that allows to track your best result in game.</sub><br>
+<sub>**additional steps:** indeally, if all steps above are completed, we will improve the visuals of the game, including a background and more, try fixing bugs and so on.</sub><br>
 
 
 ## Get started

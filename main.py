@@ -1,8 +1,8 @@
 import pygame
 
 # globale Variable for game window
-window_heigth = 600
-window_width = 400
+window_heigth = 800
+window_width = 600
 
 # generate window for frame
 window = pygame.display.set_mode((window_width, window_heigth))
@@ -36,10 +36,18 @@ while running:
     bird_image = pygame.image.load("images/bird.png")
     pipe_image = pygame.image.load("images/pipe.png")
 
+    background_image_upscaled = pygame.transform.scale(
+        background_image,
+        (background_image.get_width() * 6, background_image.get_height() * 6),
+    )
+    bird_image_downscaled = pygame.transform.scale(
+        bird_image,
+        (bird_image.get_width() * 0.2, bird_image.get_height() * 0.2),
+    )
     # Render graphics
     window.fill((255, 255, 255))
-    window.blit(background_image, (0, 0))
-    window.blit(bird_image, bird_position)
+    window.blit(background_image_upscaled, (-20, -20))
+    window.blit(bird_image_downscaled, bird_position)
     window.blit(pipe_image, (0, elevation))
 
     # Update the display

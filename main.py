@@ -29,7 +29,10 @@ while running:
             running = False
 
     # Update game state
-    bird_position = (bird_position[0], bird_position[1] - 1)
+    bird_position = (
+        bird_position[0],
+        bird_position[1] - 0,
+    )  # bird position ist nicht in der mitte Sven fragen
 
     # load images into game
     background_image = pygame.image.load("images/background.png")
@@ -47,11 +50,14 @@ while running:
     # Render graphics
     window.fill((255, 255, 255))
     window.blit(background_image_upscaled, (-20, -20))
-    window.blit(bird_image_downscaled, bird_position)
+    window.blit(
+        bird_image_downscaled, bird_position
+    )  # bird position ist nicht in der mitte Sven fragen
     window.blit(pipe_image, (0, elevation))
 
     # Update the display
     pygame.display.flip()
+
 
 # Quit pygame when the loop ends
 pygame.quit()

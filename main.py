@@ -8,17 +8,19 @@ window_width = 600
 window = pygame.display.set_mode((window_width, window_heigth))
 framespersecond = 60
 elevation = window_heigth * 0.8
-pipe_image = "images/pipe.png"
-background_image = "images/background.png"
-bird_image = "images/bird.png"
-bird_position = (window_width // 2, window_heigth // 2)
-bird_velocity = 0
 
-# load images into game
+# bird variables for game
+bird_position = (window_width // 4, window_heigth // 1.9)
+bird_velocity = 0
+started_flying = False
+
+# load images
 background_image = pygame.image.load("images/background.png")
 bird_image = pygame.image.load("images/bird.png")
 pipe_image = pygame.image.load("images/pipe.png")
 
+
+# scale images for game - size wasn't correct
 background_image_upscaled = pygame.transform.scale(
     background_image,
     (background_image.get_width() * 6, background_image.get_height() * 6),
@@ -34,7 +36,18 @@ if __name__ == "__main__":  # aus geekforgeeks
     pygame.init()
     framepersecond_clock = pygame.time.Clock()
 
+# starting loop
+running = True
+while not started_flying:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                started_flying = True
 
+
+# game loop - for gaming
 running = True
 while running:
     # Check for events
@@ -49,7 +62,7 @@ while running:
     bird_position = (
         bird_position[0],
         bird_position[1] + bird_velocity,
-    )  # bird position ist nicht in der mitte Sven fragen
+    )
 
     bird_velocity += 0.01  # bird drops each frame
 

@@ -36,6 +36,10 @@ if __name__ == "__main__":  # aus geekforgeeks
     pygame.init()
     framepersecond_clock = pygame.time.Clock()
 
+# Setting up font for display
+    font = pygame.font.SysFont(None, 55)  # None uses the default font, 55 is font size
+    text = font.render('Please press space to start', True, (255, 255, 255))  # 
+
 # starting loop
 running = True
 while not started_flying:
@@ -46,6 +50,10 @@ while not started_flying:
             if event.key == pygame.K_SPACE:
                 started_flying = True
 
+        # Display the text
+        window.fill((0, 255, 0))  # Fill screen with black
+        window.blit(text, (50, window_heigth // 2))  # Adjust the position as needed
+        pygame.display.flip()
 
 # game loop - for gaming
 running = True

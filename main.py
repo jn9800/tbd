@@ -18,7 +18,8 @@ started_flying = False
 background_image = pygame.image.load("images/background.png")
 bird_image = pygame.image.load("images/bird.png")
 pipe_image = pygame.image.load("images/pipe.png")
-
+pygame.font.init()
+font = pygame.font.SysFont("Arial", 55)  # None uses the default font, 55 is font size
 
 # scale images for game - size wasn't correct
 background_image_upscaled = pygame.transform.scale(
@@ -46,6 +47,11 @@ while not started_flying:
             if event.key == pygame.K_SPACE:
                 started_flying = True
 
+    # graphics for starting screen
+    window.fill((255, 255, 255))
+    window.blit(background_image, (-20, -20))
+
+    start_game_text = font.render("Please press space to start", True, (0, 0, 0))
 
 # game loop - for gaming
 running = True

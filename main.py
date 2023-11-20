@@ -43,7 +43,7 @@ while running:
             running = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
-                bird_velocity = -5  # birds upward speed
+                bird_velocity = -2  # birds upward speed
 
     # Update game state
     bird_position = (
@@ -51,7 +51,7 @@ while running:
         bird_position[1] + bird_velocity,
     )  # bird position ist nicht in der mitte Sven fragen
 
-    bird_velocity += 0.1  # bird drops each frame
+    bird_velocity += 0.01  # bird drops each frame
 
     if bird_position[1] < 0:
         bird_position: (bird_position[0], 0)

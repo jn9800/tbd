@@ -18,7 +18,8 @@ started_flying = False
 background_image = pygame.image.load("images/background.png")
 bird_image = pygame.image.load("images/bird.png")
 pipe_image = pygame.image.load("images/pipe.png")
-
+pygame.font.init()
+font = pygame.font.SysFont("Arial", 55)  # None uses the default font, 55 is font size
 
 # scale images for game - size wasn't correct
 background_image_upscaled = pygame.transform.scale(
@@ -50,10 +51,6 @@ while not started_flying:
             if event.key == pygame.K_SPACE:
                 started_flying = True
 
-        # Display the text
-        window.fill((0, 255, 0))  # Fill screen with black
-        window.blit(text, (50, window_heigth // 2))  # Adjust the position as needed
-        pygame.display.flip()
 
 # game loop - for gaming
 running = True

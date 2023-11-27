@@ -17,11 +17,11 @@ bird_velocity = 0
 started_flying = False
 
 # pipe variables for game
-spawn_pipe_every = 200
+spawn_pipe_every = 120
 frame_count = 0
 pipe_width = 80
 pipe_gap = 220
-pipe_speed = -2
+pipe_speed = -5
 pipes = []
 
 # load images
@@ -38,13 +38,14 @@ background_image_upscaled = pygame.transform.scale(
 )
 bird_image_downscaled = pygame.transform.scale(
     bird_image,
-    (bird_image.get_width() * 0.15, bird_image.get_height() * 0.15),
+    (bird_image.get_width() * 0.6, bird_image.get_height() * 0.6),
 )
 
 
 if __name__ == "__main__":  # aus geekforgeeks
     # For initializing modules of pygame library
     pygame.init()
+    framespersecond_clock = pygame.time.Clock()
 
 # Initialize scoring variables
 score = 0
@@ -114,7 +115,7 @@ while running:
             running = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
-                bird_velocity = -3  # birds upward speed
+                bird_velocity = -6  # birds upward speed
 
     # Update game state
     bird_position = (
@@ -122,7 +123,7 @@ while running:
         bird_position[1] + bird_velocity,
     )
 
-    bird_velocity += 0.1  # bird drops each frame
+    bird_velocity += 0.25  # bird drops each frame
 
     if bird_position[1] < 0:
         bird_position: (bird_position[0], 0)

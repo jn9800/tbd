@@ -53,6 +53,14 @@ while not started_flying:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_x, mouse_y = pygame.mouse.get_pos()
+            if (
+                exit_button_x <= mouse_x <= exit_button_x + exit_button_width
+                and exit_button_y <= mouse_y <= exit_button_y + exit_button_height
+            ):
+                running = False
+                started_flying = True
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 started_flying = True
@@ -71,6 +79,25 @@ while not started_flying:
     text = font.render("Please press space to start", True, (120, 0, 0))
     text_rect = text.get_rect(center=(window_width // 2, window_heigth // 2))
     window.blit(text, text_rect)
+
+    # exit button
+    exit_button_width, exit_button_height = 200, 50
+    exit_button_x = (window_width - exit_button_width) // 2
+    exit_button_y = (window_heigth // 2) + 100
+
+    pygame.draw.rect(
+        window,
+        (0, 0, 0),
+        (exit_button_x, exit_button_y, exit_button_width, exit_button_height),
+    )
+    exit_text = font.render("Exit", True, (120, 0, 0))
+    exit_text_rect = exit_text.get_rect(
+        center=(
+            exit_button_x + exit_button_width // 2,
+            exit_button_y + exit_button_height // 2,
+        )
+    )
+    window.blit(exit_text, exit_text_rect)
 
     pygame.display.flip()
 
@@ -92,7 +119,7 @@ while running:
         bird_position[1] + bird_velocity,
     )
 
-    bird_velocity += 0.01  # bird drops each frame
+    bird_velocity += 0.1  # bird drops each frame
 
     if bird_position[1] < 0:
         bird_position: (bird_position[0], 0)

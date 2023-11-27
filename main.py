@@ -21,7 +21,7 @@ spawn_pipe_every = 120
 frame_count = 0
 pipe_width = 80
 pipe_gap = 220
-pipe_speed = -5
+pipe_speed = -4
 pipes = []
 
 # load images
@@ -131,6 +131,16 @@ while running:
     elif bird_position[1] > window_heigth:
         running = False
 
+    # Check if bird passed the pipe to update score
+    for pipe in pipes:
+        if pipe[0] + pipe_width < bird_position[0] and not pipe_passed:
+            score += 1
+            pipe_passed = True
+
+    # Reset pipe_passed when a new pipe is generated
+    if frame_count % spawn_pipe_every == 0:
+        pipe_passed = False
+
     # pipe spawning
     if frame_count % spawn_pipe_every == 0:
         top_pipe_height = random.randint(50, window_heigth - pipe_gap - 50)
@@ -169,9 +179,10 @@ while running:
     score_text = font.render(f"Score: {score}", True, (255, 255, 255))
     window.blit(score_text, (10, 10))
 
-    framespersecond_clock.tick(framespersecond)
-    # Update the display
+    # Update the display only once per frame
     pygame.display.flip()
+
+    framespersecond_clock.tick(framespersecond)
 
 # Quit pygame when the loop ends
 pygame.quit()

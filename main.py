@@ -168,6 +168,7 @@ while running:
     score_text = font.render(f"Score: {score}", True, (255, 255, 255))
     window.blit(score_text, (10, 10))
 
+    framespersecond_clock.tick(framespersecond)
     # Update the display
     pygame.display.flip()
 

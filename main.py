@@ -28,6 +28,7 @@ pipes = []
 background_image = pygame.image.load("images/background.png")
 bird_image = pygame.image.load("images/bird.png")
 pipe_image = pygame.image.load("images/pipe.png")
+brick_texture = pygame.image.load("images/texture.png")
 pygame.font.init()
 font = pygame.font.SysFont("Arial", 30)  # None uses the default font, 55 is font size
 

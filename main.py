@@ -1,4 +1,5 @@
 import pygame
+import random
 
 # globale Variable for game window
 window_heigth = 800
@@ -14,6 +15,14 @@ elevation = window_heigth * 0.8
 bird_position = (window_width // 4, window_heigth // 1.9)
 bird_velocity = 0
 started_flying = False
+
+# pipe variables for game
+spawn_pipe_every = 90
+frame_count = 0
+pipe_width = 80
+pipe_gap = 200
+pipe_speed = -2
+pipes = []
 
 # load images
 background_image = pygame.image.load("images/background.png")
@@ -68,6 +77,7 @@ while not started_flying:
 # game loop - for gaming
 running = True
 while running:
+    frame_count += 1
     # Check for events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -89,6 +99,16 @@ while running:
     elif bird_position[1] > window_heigth:
         running = False
 
+    # pipe spawning
+    if frame_count % spawn_pipe_every == 0:
+        top_pipe_height = random.randint(50, window_heigth - pipe_gap - 50)
+        pipes.append([window_width, 0, pipe_width, top_pipe_height])
+
+    for pipe in pipes:
+        pipe[0] += pipe_speed
+
+    pipes = [pipe for pipe in pipes if pipe[0] > -pipe_width]
+
     # Render graphics
     window.fill((255, 255, 255))
     window.blit(background_image_upscaled, (-20, -20))
@@ -96,6 +116,10 @@ while running:
         bird_image_downscaled, bird_position
     )  # bird position ist nicht in der mitte Sven fragen
     window.blit(pipe_image, (0, elevation))
+
+    # draw pipes
+    for pipe in pipes:
+        pygame.draw.rect(window, (0, 128, 0), pipe)
 
     # Update the display
     pygame.display.flip()

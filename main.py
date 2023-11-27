@@ -17,7 +17,7 @@ bird_velocity = 0
 started_flying = False
 
 # pipe variables for game
-spawn_pipe_every = 90
+spawn_pipe_every = 200
 frame_count = 0
 pipe_width = 80
 pipe_gap = 200
@@ -38,7 +38,7 @@ background_image_upscaled = pygame.transform.scale(
 )
 bird_image_downscaled = pygame.transform.scale(
     bird_image,
-    (bird_image.get_width() * 0.2, bird_image.get_height() * 0.2),
+    (bird_image.get_width() * 0.15, bird_image.get_height() * 0.15),
 )
 
 
@@ -111,7 +111,7 @@ while running:
             running = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
-                bird_velocity = -2  # birds upward speed
+                bird_velocity = -3  # birds upward speed
 
     # Update game state
     bird_position = (

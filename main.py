@@ -21,7 +21,7 @@ spawn_pipe_every = 120
 frame_count = 0
 pipe_width = 80
 pipe_gap = 220
-pipe_speed = -5
+pipe_speed = -4
 pipes = []
 
 # load images

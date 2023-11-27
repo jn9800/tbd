@@ -20,7 +20,7 @@ started_flying = False
 spawn_pipe_every = 200
 frame_count = 0
 pipe_width = 80
-pipe_gap = 200
+pipe_gap = 220
 pipe_speed = -2
 pipes = []
 
@@ -130,6 +130,15 @@ while running:
     if frame_count % spawn_pipe_every == 0:
         top_pipe_height = random.randint(50, window_heigth - pipe_gap - 50)
         pipes.append([window_width, 0, pipe_width, top_pipe_height])
+        bottom_pipe_height = window_heigth - top_pipe_height - pipe_gap
+        pipes.append(
+            [
+                window_width,
+                window_heigth - bottom_pipe_height,
+                pipe_width,
+                bottom_pipe_height,
+            ]
+        )
 
     for pipe in pipes:
         pipe[0] += pipe_speed
@@ -146,7 +155,7 @@ while running:
 
     # draw pipes
     for pipe in pipes:
-        pygame.draw.rect(window, (0, 128, 0), pipe)
+        pygame.draw.rect(window, (128, 128, 128), pipe)
 
     # Update the display
     pygame.display.flip()

@@ -46,6 +46,9 @@ if __name__ == "__main__":  # aus geekforgeeks
     # For initializing modules of pygame library
     pygame.init()
 
+# Initialize scoring variables
+score = 0
+pipe_passed = False
 
 # starting loop
 running = True
@@ -160,6 +163,12 @@ while running:
     # Update the display
     pygame.display.flip()
 
+    # Display Score
+    score_text = font.render(f"Score: {score}", True, (255, 255, 255))
+    window.blit(score_text, (10, 10))
+
+    # Update the display
+    pygame.display.flip()
 
 # Quit pygame when the loop ends
 pygame.quit()

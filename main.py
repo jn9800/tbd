@@ -9,6 +9,7 @@ window = pygame.display.set_mode((window_width, window_heigth))
 framespersecond = 60
 elevation = window_heigth * 0.8
 
+
 # bird variables for game
 bird_position = (window_width // 4, window_heigth // 1.9)
 bird_velocity = 0
@@ -19,7 +20,7 @@ background_image = pygame.image.load("images/background.png")
 bird_image = pygame.image.load("images/bird.png")
 pipe_image = pygame.image.load("images/pipe.png")
 pygame.font.init()
-font = pygame.font.SysFont("Arial", 55)  # None uses the default font, 55 is font size
+font = pygame.font.SysFont("Arial", 30)  # None uses the default font, 55 is font size
 
 # scale images for game - size wasn't correct
 background_image_upscaled = pygame.transform.scale(
@@ -35,11 +36,7 @@ bird_image_downscaled = pygame.transform.scale(
 if __name__ == "__main__":  # aus geekforgeeks
     # For initializing modules of pygame library
     pygame.init()
-    framepersecond_clock = pygame.time.Clock()
 
-# Setting up font for display
-    font = pygame.font.SysFont(None, 55)  # None uses the default font, 55 is font size
-    text = font.render('Please press space to start', True, (255, 255, 255))  # 
 
 # starting loop
 running = True
@@ -51,6 +48,22 @@ while not started_flying:
             if event.key == pygame.K_SPACE:
                 started_flying = True
 
+    # background
+    window.fill((0, 0, 0))  # clears window
+
+    window.blit(background_image_upscaled, (-20, -20))
+
+    # textbox
+    box_width, box_height = 400, 100  # You can adjust the size as needed
+    box_x = (window_width - box_width) // 2
+    box_y = (window_heigth - box_height) // 2
+    pygame.draw.rect(window, (0, 0, 0), (box_x, box_y, box_width, box_height))
+
+    text = font.render("Please press space to start", True, (120, 0, 0))
+    text_rect = text.get_rect(center=(window_width // 2, window_heigth // 2))
+    window.blit(text, text_rect)
+
+    pygame.display.flip()
 
 # game loop - for gaming
 running = True

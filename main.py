@@ -36,9 +36,9 @@ pygame.font.init()
 font = pygame.font.SysFont("Arial", 30)  # None uses the default font, 55 is font size
 
 # load sound
-pygame.mixer.music.load("sound/Soliloquy.mp3")
+# pygame.mixer.music.load("sound/Soliloquy.mp3")
 
-pygame.mixer.music.play(-1)  # -1 means the music will loop indefinitely
+# pygame.mixer.music.play(-1)  # -1 means the music will loop indefinitely
 
 
 # scale images for game - size wasn't correct

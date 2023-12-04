@@ -1,6 +1,8 @@
 import pygame
 import random
 
+pygame.mixer.init()
+
 # globale Variable for game window
 window_heigth = 800
 window_width = 600
@@ -29,8 +31,15 @@ background_image = pygame.image.load("images/background.png")
 bird_image = pygame.image.load("images/bird.png")
 pipe_image = pygame.image.load("images/pipe.png")
 brick_texture = pygame.image.load("images/texture.png")
+
 pygame.font.init()
 font = pygame.font.SysFont("Arial", 30)  # None uses the default font, 55 is font size
+
+# load sound
+pygame.mixer.music.load("sound/Soliloquy.mp3")
+
+pygame.mixer.music.play(-1)  # -1 means the music will loop indefinitely
+
 
 # scale images for game - size wasn't correct
 background_image_upscaled = pygame.transform.scale(

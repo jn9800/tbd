@@ -52,6 +52,31 @@ if __name__ == "__main__":  # aus geekforgeeks
 score = 0
 pipe_passed = False
 
+# you have crashed display
+
+
+def display_crash_screen(window, score):
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    return  # exit function and restart game
+
+        window.fill((0, 0, 0))
+        crash_text = font.render("you crashed mofogo", True, (255, 0, 0))
+        score_text = font.render(f"Your Score: {score}", True, (255, 0, 0))
+        restart_text = font.render("press space to restart", True, (255, 0, 0))
+
+        window.blit(crash_text, (window_width // 2 - 100, window_heigth // 2 - 50))
+        window.blit(score_text, (window_width // 2 - 100, window_heigth // 2))
+        window.blit(restart_text, (window_width // 2 - 100, window_heigth // 2 + 50))
+
+        pygame.display.flip()
+
+
 # starting loop
 running = True
 while not started_flying:
@@ -108,6 +133,7 @@ while not started_flying:
 
 # game loop - for gaming
 running = True
+show_crash_screen = False
 while running:
     frame_count += 1
     # Check for events
@@ -191,13 +217,24 @@ while running:
     pygame.display.flip()
 
     # Display Score
-    score_text = font.render(f"Score: {score}", True, (255, 255, 255))
+    score_text = font.render(f"Score: {score}", True, (255, 0, 0))
     window.blit(score_text, (10, 10))
 
     # Update the display only once per frame
     pygame.display.flip()
 
     framespersecond_clock.tick(framespersecond)
+
+    if show_crash_screen:
+        display_crash_screen(window, score)
+
+        # now resetting game state
+        running = True
+        show_crash_screen = False
+        score = 0
+        pipes = []
+        bird_position = (window_width // 4, window_heigth // 1.9)
+        bird_velocity = 0
 
 
 # Quit pygame when the loop ends

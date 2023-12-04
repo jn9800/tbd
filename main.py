@@ -63,11 +63,12 @@ if __name__ == "__main__":  # aus geekforgeeks
 # Initialize scoring variables
 score = 0
 pipe_passed = False
+high_score = 0
 
 # you have crashed display
 
 
-def display_crash_screen(window, score):
+def display_crash_screen(window, score, high_score):
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -81,10 +82,16 @@ def display_crash_screen(window, score):
         crash_text = font.render("you crashed dawg", True, (255, 0, 0))
         score_text = font.render(f"Your Score: {score}", True, (255, 0, 0))
         restart_text = font.render("press space to restart", True, (255, 0, 0))
+        high_score_text = font.render(
+            f"Your high score: {high_score}", True, (255, 0, 0)
+        )
 
         window.blit(crash_text, (window_width // 2 - 100, window_heigth // 2 - 50))
         window.blit(score_text, (window_width // 2 - 100, window_heigth // 2))
         window.blit(restart_text, (window_width // 2 - 100, window_heigth // 2 + 50))
+        window.blit(
+            high_score_text, (window_width // 2 - 100, window_heigth // 2 + 100)
+        )
 
         pygame.display.flip()
 
@@ -238,7 +245,10 @@ while running:
     framespersecond_clock.tick(framespersecond)
 
     if show_crash_screen:
-        display_crash_screen(window, score)
+        display_crash_screen(window, score, high_score)
+
+        if score > high_score:
+            score = high_score
 
         # now resetting game state
         running = True

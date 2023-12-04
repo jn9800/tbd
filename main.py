@@ -38,6 +38,9 @@ font = pygame.font.SysFont("Arial", 30)  # None uses the default font, 55 is fon
 # load sound
 pygame.mixer.music.load("sound/Soliloquy.mp3")
 
+jump_sound = pygame.mixer.Sound("sound/")
+
+
 pygame.mixer.music.play(-1)  # -1 means the music will loop indefinitely
 
 # Set the volume (0.4 for half volume, for example)

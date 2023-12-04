@@ -66,7 +66,7 @@ def display_crash_screen(window, score):
                     return  # exit function and restart game
 
         window.fill((0, 0, 0))
-        crash_text = font.render("you crashed mofogo", True, (255, 0, 0))
+        crash_text = font.render("you crashed dawg", True, (255, 0, 0))
         score_text = font.render(f"Your Score: {score}", True, (255, 0, 0))
         restart_text = font.render("press space to restart", True, (255, 0, 0))
 

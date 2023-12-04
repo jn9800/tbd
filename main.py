@@ -40,6 +40,9 @@ pygame.mixer.music.load("sound/Soliloquy.mp3")
 
 pygame.mixer.music.play(-1)  # -1 means the music will loop indefinitely
 
+# Set the volume (0.4 for half volume, for example)
+pygame.mixer.music.set_volume(0.4)
+
 
 # scale images for game - size wasn't correct
 background_image_upscaled = pygame.transform.scale(

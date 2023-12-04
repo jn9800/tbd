@@ -124,6 +124,19 @@ while running:
         bird_position[1] + bird_velocity,
     )
 
+    # transform into rect, to make collision detection simpler
+    bird_rect = pygame.Rect(
+        bird_position[0],
+        bird_position[1],
+        bird_image_downscaled.get_width(),
+        bird_image_downscaled.get_height(),
+    )
+    # collision detection
+    for pipe in pipes:
+        if bird_rect.colliderect(pipe):
+            running = False
+            show_crash_screen = True
+
     bird_velocity += 0.25  # bird drops each frame
 
     if bird_position[1] < 0:
@@ -143,7 +156,7 @@ while running:
 
     # pipe spawning
     if frame_count % spawn_pipe_every == 0:
-        top_pipe_height = random.randint(50, window_heigth - pipe_gap - 50)
+        top_pipe_height = random.randint(150, window_heigth - pipe_gap - 50)
         pipes.append([window_width, 0, pipe_width, top_pipe_height])
         bottom_pipe_height = window_heigth - top_pipe_height - pipe_gap
         pipes.append(
@@ -159,6 +172,8 @@ while running:
         pipe[0] += pipe_speed
 
     pipes = [pipe for pipe in pipes if pipe[0] > -pipe_width]
+    for i in range(len(pipes)):
+        pipes[i] = pygame.Rect(pipes[i][0], pipes[i][1], pipe_width, pipes[i][3])
 
     # Render graphics
     window.fill((255, 255, 255))
@@ -183,6 +198,7 @@ while running:
     pygame.display.flip()
 
     framespersecond_clock.tick(framespersecond)
+
 
 # Quit pygame when the loop ends
 pygame.quit()

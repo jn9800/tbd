@@ -156,7 +156,7 @@ while running:
 
     # pipe spawning
     if frame_count % spawn_pipe_every == 0:
-        top_pipe_height = random.randint(150, window_heigth - pipe_gap - 50)
+        top_pipe_height = random.randint(100, window_heigth - pipe_gap - 50)
         pipes.append([window_width, 0, pipe_width, top_pipe_height])
         bottom_pipe_height = window_heigth - top_pipe_height - pipe_gap
         pipes.append(

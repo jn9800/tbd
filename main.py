@@ -44,6 +44,9 @@ pygame.mixer.music.play(-1)
 # Set the volume (0.4 for half volume, for example)
 pygame.mixer.music.set_volume(0.4)
 
+# adding space bar sound
+space_bar_sound = pygame.mixer.Sound("sound/watersplash.flac")
+
 
 # scale images for game - size wasn't correct
 background_image_upscaled = pygame.transform.scale(
@@ -163,6 +166,7 @@ while running:
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 bird_velocity = -6  # birds upward speed
+                space_bar_sound.play()
 
     # Update game state
     bird_position = (

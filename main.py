@@ -45,7 +45,10 @@ pygame.mixer.music.play(-1)
 pygame.mixer.music.set_volume(0.4)
 
 # adding space bar sound
-space_bar_sound = pygame.mixer.Sound("sound/watersplash.flac")
+space_bar_sound = pygame.mixer.Sound("sound/bubbles.mp3")
+
+# adjusting space bar sound volume
+space_bar_sound.set_volume(0.1)
 
 
 # scale images for game - size wasn't correct

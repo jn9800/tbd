@@ -42,7 +42,7 @@ pygame.mixer.music.load("sound/Soliloquy.mp3")
 pygame.mixer.music.play(-1)  
 
 # Set the volume (0.4 for half volume, for example)
-pygame.mixer.music.set_volume(0.4)
+pygame.mixer.music.set_volume(0.1)
 
 # adding space bar sound
 space_bar_sound = pygame.mixer.Sound("sound/bubbles.mp3")

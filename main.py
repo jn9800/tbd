@@ -198,11 +198,16 @@ while running:
         bird_image_downscaled.get_width(),
         bird_image_downscaled.get_height(),
     )
-    # collision detection
+    # collision detection with pipes
     for pipe in pipes:
         if bird_rect.colliderect(pipe):
             running = False
             show_crash_screen = True
+
+    # collison detection with top of screen
+    if bird_rect.top <= 0:
+        running = False
+        show_crash_screen = True
 
     bird_velocity += 0.25  # bird drops each frame
 

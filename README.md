@@ -1,11 +1,11 @@
 
 
-## flappy_bird
+## flappy_dolphin
 
 In a few sentences describe what your project is trying to solve.
 
-**We are planing to launch a flappy birds successor**
-<br>the base idea is to create a simple version of flappy bird, where a bird or another icon jumps across the screen through gates. 
+**We are planing to launch a flappy dolphins successor**
+<br>the base idea is to create a simple version of flappy dolphin, where a dolphin or another icon jumps across the screen through gates. 
 <br>Each gate you pass, will add one score point on your current score. In case we achieve a sufficient level of the game within the period of this course, we will also try to implement a highscore system.
 <br>
 <br>The game should run within a separate window with a limited screensize. 

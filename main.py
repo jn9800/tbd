@@ -13,9 +13,9 @@ framespersecond = 60
 elevation = window_heigth * 0.8
 
 
-# bird variables for game
-bird_position = (window_width // 4, window_heigth // 1.9)
-bird_velocity = 0
+# dolphin variables for game
+dolphin_position = (window_width // 4, window_heigth // 1.9)
+dolphin_velocity = 0
 started_flying = False
 
 # pipe variables for game
@@ -28,7 +28,7 @@ pipes = []
 
 # load images
 background_image = pygame.image.load("images/background.png")
-bird_image = pygame.image.load("images/bird.png")
+dolphin_image = pygame.image.load("images/dolphin.png")
 pipe_image = pygame.image.load("images/pipe.png")
 brick_texture = pygame.image.load("images/texture.png")
 
@@ -56,9 +56,9 @@ background_image_upscaled = pygame.transform.scale(
     background_image,
     (background_image.get_width() * 6, background_image.get_height() * 6),
 )
-bird_image_downscaled = pygame.transform.scale(
-    bird_image,
-    (bird_image.get_width() * 0.6, bird_image.get_height() * 0.6),
+dolphin_image_downscaled = pygame.transform.scale(
+    dolphin_image,
+    (dolphin_image.get_width() * 0.6, dolphin_image.get_height() * 0.6),
 )
 
 
@@ -182,43 +182,43 @@ while running:
             running = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
-                bird_velocity = -6  # birds upward speed
+                dolphin_velocity = -6  # dolphins upward speed
                 space_bar_sound.play()
 
     # Update game state
-    bird_position = (
-        bird_position[0],
-        bird_position[1] + bird_velocity,
+    dolphin_position = (
+        dolphin_position[0],
+        dolphin_position[1] + dolphin_velocity,
     )
 
     # transform into rect, to make collision detection simpler
-    bird_rect = pygame.Rect(
-        bird_position[0],
-        bird_position[1],
-        bird_image_downscaled.get_width(),
-        bird_image_downscaled.get_height(),
+    dolphin_rect = pygame.Rect(
+        dolphin_position[0],
+        dolphin_position[1],
+        dolphin_image_downscaled.get_width(),
+        dolphin_image_downscaled.get_height(),
     )
     # collision detection with pipes
     for pipe in pipes:
-        if bird_rect.colliderect(pipe):
+        if dolphin_rect.colliderect(pipe):
             running = False
             show_crash_screen = True
 
     # collison detection with top of screen
-    if bird_rect.top <= 0:
+    if dolphin_rect.top <= 0:
         running = False
         show_crash_screen = True
 
-    bird_velocity += 0.25  # bird drops each frame
+    dolphin_velocity += 0.25  # dolphin drops each frame
 
-    if bird_position[1] < 0:
-        bird_position: (bird_position[0], 0)
-    elif bird_position[1] > window_heigth:
+    if dolphin_position[1] < 0:
+        dolphin_position: (dolphin_position[0], 0)
+    elif dolphin_position[1] > window_heigth:
         running = False
 
-    # Check if bird passed the pipe to update score
+    # Check if dolphin passed the pipe to update score
     for pipe in pipes:
-        if pipe[0] + pipe_width < bird_position[0] and not pipe_passed:
+        if pipe[0] + pipe_width < dolphin_position[0] and not pipe_passed:
             score += 1
             pipe_passed = True
 
@@ -251,8 +251,8 @@ while running:
     window.fill((255, 255, 255))
     window.blit(background_image_upscaled, (-20, -20))
     window.blit(
-        bird_image_downscaled, bird_position
-    )  # bird position ist nicht in der mitte Sven fragen
+        dolphin_image_downscaled, dolphin_position
+    )  # dolphin position ist nicht in der mitte Sven fragen
     window.blit(pipe_image, (0, elevation))
 
     # draw pipes
@@ -283,8 +283,8 @@ while running:
         show_crash_screen = False
         score = 0
         pipes = []
-        bird_position = (window_width // 4, window_heigth // 1.9)
-        bird_velocity = 0
+        dolphin_position = (window_width // 4, window_heigth // 1.9)
+        dolphin_velocity = 0
 
 
 # Quit pygame when the loop ends

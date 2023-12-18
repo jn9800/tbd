@@ -39,7 +39,7 @@ font = pygame.font.SysFont("Arial", 30)  # None uses the default font, 55 is fon
 pygame.mixer.music.load("sound/Soliloquy.mp3")
 
 # -1 means the music will loop indefinitely
-pygame.mixer.music.play(-1)  
+pygame.mixer.music.play(-1)
 
 # Set the volume (0.4 for half volume, for example)
 pygame.mixer.music.set_volume(0.1)
@@ -62,19 +62,33 @@ bird_image_downscaled = pygame.transform.scale(
 )
 
 
+# highscore function
+def save_high_score(high_score):
+    with open("highscore.txt", "w") as file:
+        file.write(str(high_score))
+
+
+def load_high_score():
+    try:
+        with open("highscore.txt", "r") as file:
+            return int(file.read())
+    except FileNotFoundError:
+        return 0
+
+
 if __name__ == "__main__":  # aus geekforgeeks
     # For initializing modules of pygame library
     pygame.init()
     framespersecond_clock = pygame.time.Clock()
+    high_score = load_high_score()
+
 
 # Initialize scoring variables
 score = 0
 pipe_passed = False
-high_score = 0
+
 
 # you have crashed display
-
-
 def display_crash_screen(window, score, high_score):
     while True:
         for event in pygame.event.get():
@@ -256,7 +270,8 @@ while running:
         display_crash_screen(window, score, high_score)
 
         if score > high_score:
-            score = high_score
+            high_score = score
+            save_high_score(high_score)
 
         # now resetting game state
         running = True
